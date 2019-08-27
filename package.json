@@ -8,7 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ttskch/select2-bootstrap4-theme": "^1.2.3",
     "core-js": "^2.6.5",
+    "v-select2-component": "^0.3.9",
     "vue": "^2.6.10"
   },
   "devDependencies": {
