@@ -8,7 +8,7 @@
         <div class="card-body">
           <h5 class="card-title"></h5>
           <form>
-            <div class="input-group mb-3">
+            <div class="input-group input-group-lg mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">
                   <font-awesome-icon icon="running" fixed-width/>
@@ -26,7 +26,7 @@
               <small id="paceHelp" class="form-text text-muted">Введите темп в формате мин/км, (например 05:30 мин/км).<br/>Или оставьте поле пустым для его автоматического расчета.</small>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group input-group-lg mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"><font-awesome-icon icon="clock" fixed-width/></span>
               </div>
@@ -42,9 +42,22 @@
               <small id="timeHelp" class="form-text text-muted">Введите время забега в формате ЧЧ:ММ:СС (например 02:20:42).<br/>Или оставьте поле пустым для его автоматического расчета.</small>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group input-group-lg mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text"><font-awesome-icon icon="route" fixed-width/></span>
+                <button class="input-group-text" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font-awesome-icon icon="route" fixed-width/></button>
+                <button type="button" class="btn input-group-text dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a v-on:click="marathon" class="dropdown-item">Марафон</a>
+                  <a v-on:click="halfmarathon" class="dropdown-item">Полумарафон</a>
+                  <div role="separator" class="dropdown-divider"></div>
+                  <a v-on:click="dist_15" class="dropdown-item">15 км</a>
+                  <a v-on:click="dist_10" class="dropdown-item">10 км</a>
+                  <a v-on:click="dist_5" class="dropdown-item">5 км</a>
+                  <a v-on:click="dist_3" class="dropdown-item">3 км</a>
+                  <a v-on:click="dist_1" class="dropdown-item">1 км</a>
+                </div>
               </div>
               <input
                       type="number"
@@ -148,6 +161,29 @@ export default {
 
 
     }
+  },
+  methods: {
+    marathon: function () {
+      return this.distance = 42.195;
+    },
+    halfmarathon: function () {
+      return this.distance = 21.0975;
+    },
+    dist_15: function () {
+      return this.distance = 15;
+    },
+    dist_10: function () {
+      return this.distance = 10;
+    },
+    dist_5: function () {
+      return this.distance = 5;
+    },
+    dist_3: function () {
+      return this.distance = 3;
+    },
+    dist_1: function () {
+      return this.distance = 1;
+    },
   }
 }
 </script>
@@ -156,5 +192,8 @@ export default {
   .input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+  }
+  .form-text {
+    margin-left: 5px;
   }
 </style>
